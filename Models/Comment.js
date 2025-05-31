@@ -10,4 +10,4 @@ const commentSchema = new mongoose.Schema({
 
 },{timestamps:true})
 
-module.exports = mongoose.model('Video',commentSchema);
+module.exports = mongoose.Models.Comment('Video',commentSchema);
