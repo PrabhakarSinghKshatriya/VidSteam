@@ -1,5 +1,5 @@
 const express = require('express')
-const Router = expressRouter()
+const Router = express.Router()
 const checkAuth = require('../middleware/checkAuth')
 const jwt = require('jsonwebtoken')
 const cloudinary = require('cloudinary').v2
