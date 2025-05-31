@@ -7,7 +7,7 @@ const User = require('../Models/User')
 const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
 const { json } = require('body-parser')
-const checkAuth = require('../middleware/checkAuth ')
+const checkAuth = require('../middleware/checkAuth')
 
 
 cloudinary.config({
