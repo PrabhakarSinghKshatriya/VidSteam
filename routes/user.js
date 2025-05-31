@@ -7,7 +7,7 @@ const User = require('../Models/User')
 const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
 const { json } = require('body-parser')
-const checkAuth = require('../middleware/checkAuth')
+const checkAuth = require('./middleware/checkAuth')
 
 cloudinary.config({
 cloud_name: process.env.cloud_name,
@@ -18,7 +18,7 @@ api_secret: process.env.api_secret
 Router.post('/signup',async (req,res)=>{
     try{
 
-        const Users = await User.find({email:req.body.email})
+        const users = await User.find({email:req.body.email})
         if (User.length>0)
         {
             return res.status(500).json({
@@ -145,7 +145,7 @@ catch(err)
         try
         {
             const userA = await jwt.verify(req.headers.authorization.split(" ")[1],'Prabhakar Singh Kshatriya')
-            const UserB = await User.findById(req.params.userBId)
+            const userB = await User.findById(req.params.userBId)
             console.log(userA)
             console.log(userB)
 
@@ -172,9 +172,12 @@ catch(err)
 
         }
         catch(err)
-        {
-
-        }
+    {
+    console.log(err)
+    res.status(500).json({
+        error:err
+    })
+}
 
     })
 
