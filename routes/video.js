@@ -23,7 +23,7 @@ Router.post('/upload',checkAuth,async()=>{
         const uploaderThumbnail = await cloudinary.uploader.upload(req.files.uploaderThumbnail.tempFilePath)
 
         const newVideo = new Video({
-            _id:mongoose>Schema.Types.ObjectId,
+            _id:mongoose.Schema.Types.ObjectId,
             title:req.body.title,
             description:req.body.description,
             user_id:User._id,
