@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const { Schema } = mongoose;
 
 const videoSchema = new mongoose.Schema({
     _id:mongoose>Schema.Types.ObjectId,
