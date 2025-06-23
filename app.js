@@ -8,20 +8,26 @@ const commentRoute = require('./routes/comment')
 
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
+const cors = require('cors') 
 
-mongoose.connect(process.env.MONGO_URI)
-.then(res=>{
-    console.log('connected with database...')
-})
-.catch(err=>{
-    console.log(err)
-})
+const connectWithDatabase =async()=>{
+    try{
+        const res=await mongoose.connect(process.env.MONGO_URI)
+        console.log('connected with database')
+    }
+    catch(err)
+    {
+        console.log(err)
+    }
+}
+connectWithDatabase()
 
+app.use(cors())
 app.use(bodyParser.json())
 
 app.use(fileUpload({
     useTempFiles : true,
-    tempFileDir :'/tmp/'
+    // tempFileDir :'/tmp/'
 }));
 
 app.use('/user',userRoute)
